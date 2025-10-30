@@ -62,6 +62,7 @@ describe("Local Debug Tests", function () {
         localDebugTestContext.testRootFolder,
         localDebugTestContext.appName
       );
+      process.env["AZURE_OPENAI_API_KEY"] = "";
       validateFileExist(projectPath, "src/app.py");
       const envPath = path.resolve(projectPath, "env", ".env.local.user");
       const isRealKey = OpenAiKey.openAiKey ? true : false;
