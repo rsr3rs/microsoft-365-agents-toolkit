@@ -6,6 +6,7 @@
  */
 import * as path from "path";
 import {
+  clearNotifications,
   createEnvironmentWithPython,
   startDebugging,
   waitForTerminal,
@@ -26,7 +27,10 @@ import {
 } from "../../utils/constants";
 import { Env, OpenAiKey } from "../../utils/env";
 import { it } from "../../utils/it";
-import { editDotEnvFile, validateFileExist } from "../../utils/commonUtils";
+import { editDotEnvFile, sleep, validateFileExist } from "../../utils/commonUtils";
+import {
+  VSBrowser,
+} from "vscode-extension-tester";
 
 describe("Local Debug Tests", function () {
   this.timeout(Timeout.testCase);
@@ -69,6 +73,9 @@ describe("Local Debug Tests", function () {
       await startDebugging(DebugItemSelect.DebugInTeamsUsingChrome);
 
       await waitForTerminal(LocalDebugTaskLabel.StartLocalTunnel);
+      await sleep(3*60*1000)
+      await clearNotifications();
+      await VSBrowser.instance.takeScreenshot("debugerr");
       await waitForTerminal(
         LocalDebugTaskLabel2.PythonDebugConsole,
         LocalDebugTaskInfo.PythonTaskStarted
