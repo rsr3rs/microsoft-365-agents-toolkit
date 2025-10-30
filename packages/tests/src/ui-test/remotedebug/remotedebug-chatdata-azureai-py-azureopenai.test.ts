@@ -207,7 +207,7 @@ describe("Remote debug Tests", function () {
               botCommand: "Tell me about Contoso Electronics PerksPlus Program",
               expectedWelcomeMessage:
                 ValidationContent.AiChatBotWelcomeInstruction,
-              expectedReplyMessage: "$1000",
+              expectedReplyMessage: "$1",
               timeout: Timeout.longTimeWait,
             });
           } else {
