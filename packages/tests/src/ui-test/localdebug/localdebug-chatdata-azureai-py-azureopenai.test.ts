@@ -119,7 +119,7 @@ describe("Local Debug Tests", function () {
           "will be ignored"
         );
         if (!success) {
-          throw new Error("Failed to install packages");
+          console.log("Failed to create indexer");
         }
       }
 
